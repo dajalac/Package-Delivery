@@ -4,14 +4,18 @@ import csv
 import csv
 
 distance_list = []
+start_vertex = 0
 with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
     readCsv = csv.reader(csv_file, delimiter=',')
     print(readCsv)
     for row in readCsv:
         distance_list.append(row)
 
+    def short_path(unvisited_queue):
+       for unvisited_queue in distance_list:
 
-    def short_path(start_vertex):
+
+    def short_path2(start_vertex):
         global vertx
         unvisited_queue = []
         for current_vertex in distance_list:

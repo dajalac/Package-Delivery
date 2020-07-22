@@ -53,23 +53,34 @@ def dj(start_vertex):
         distance.append(c)
     print(distance)
 
+    s = [2,3,4,7,19]
     min = 1000
-    for i in range(len(unvisited_queue)):
-        print("i", i)
-        if distance_list[i][start_vertex] is '':  # here I think that we should use unvisited-quee
-            continue  # tem q mudar isso p como esta no onenote
-        elif 0 < float(distance_list[i][start_vertex]) <= float(min):
-            min = distance_list[i][start_vertex]
-            print("min distance 3", min)
-            vertx = i
-    print("vertexi", vertx)
-    current_vertex = unvisited_queue.pop(vertx)
-    print((current_vertex))
-    # start_vertex= vertx
-    print(current_vertex)
+    while len(s) > 0:
+        for i in range(len(unvisited_queue)):
+            if unvisited_queue[i][start_vertex] is '':  # here I think that we should use unvisited-quee
+                if 0 < float(unvisited_queue[start_vertex][i]) <= float(min):
+                    if i in s:
+                        min = unvisited_queue[start_vertex][i]
+                        print(" EMPTY in i  = %s and strt v %s with min distance of %s" % (i, start_vertex, min))
+                        vertx = i
+                        #start_vertex = i
+            elif 0 < float(unvisited_queue[i][start_vertex]) <= float(min):
+                if i in s:
+                    min = unvisited_queue[i][start_vertex]
+                    print(" in i = %s and start v =  %s with min distance of %s" %(i,start_vertex,min))
+                    vertx = i
+                    #start_vertex = i
+        print("vertex", vertx)
+        t = s.index(vertx)
+        print("valor do index p ser pop",t)
+        current_vertex = s.pop(t)
+        print(("current v",current_vertex))
+        # start_vertex= vertx
 
 
-a = dj(3)
+
+
+a = dj(0)
 
 # start_vertex_distance = distance_list[start_vertex][start_vertex]
 
