@@ -55,6 +55,7 @@ def dj(start_vertex):
 
     s = [2,3,4,7,19]
     min = 1000
+    adistance_acumulator = 0
     while len(s) > 0:
         print("initial vertex", start_vertex)
 
@@ -75,6 +76,8 @@ def dj(start_vertex):
                     min_distance = min
                     #start_vertex = i
         ## esse block esta se reperinto a cada for loop
+        adistance_acumulator += float(min_distance)
+        print("total acumulator", adistance_acumulator)
         print("final min distance", min)
         min = 100
         print("vertex", vertx)
@@ -82,9 +85,23 @@ def dj(start_vertex):
         start_vertex = vertx
         t = s.index(vertx)
         print("############")
-
         current_vertex = s.pop(t)
-         # start_vertex= vertx
+    if len(s) == 0:
+        print("initial vertex", start_vertex)
+        if unvisited_queue[0][start_vertex] is '':
+            min = unvisited_queue[start_vertex][0]
+            adistance_acumulator += float(min_distance)
+            print("total acumulator", adistance_acumulator)
+            print(" EMPTY in coluna  = 0 and linha v %s with min distance of %s" % (start_vertex, min))
+            print("distance from hub", min)
+        else:
+            print("initial vertex", start_vertex)
+            min = unvisited_queue[0][start_vertex]
+            adistance_acumulator += float(min_distance)
+            print("total acumulator", adistance_acumulator)
+            print(" in linha = 0 and coluna =  %s with min distance of %s" % (start_vertex, min))
+            print("distance from hub", min)
+
 
 
 
