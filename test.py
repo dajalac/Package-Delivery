@@ -46,36 +46,45 @@ def dj(start_vertex):
     for current_vertex in distance_list:
         unvisited_queue.append(current_vertex)
 
-    # tira os ' ' = acho q n vou usar
-    distance = []
-    for row in distance_list:
-        c = [i for i in row if i != '']
-        distance.append(c)
-    print(distance)
+    # # tira os ' ' = acho q n vou usar
+    # distance = []
+    # for row in distance_list:
+    #     c = [i for i in row if i != '']
+    #     distance.append(c)
+    # print(distance)
 
     s = [2,3,4,7,19]
     min = 1000
     while len(s) > 0:
+        print("initial vertex", start_vertex)
+
         for i in range(len(unvisited_queue)):
             if unvisited_queue[i][start_vertex] is '':  # here I think that we should use unvisited-quee
                 if 0 < float(unvisited_queue[start_vertex][i]) <= float(min):
                     if i in s:
                         min = unvisited_queue[start_vertex][i]
-                        print(" EMPTY in i  = %s and strt v %s with min distance of %s" % (i, start_vertex, min))
+                        print(" EMPTY in coluna  = %s and linha v %s with min distance of %s" % (i, start_vertex, min))
                         vertx = i
+                        min_distance = min
                         #start_vertex = i
             elif 0 < float(unvisited_queue[i][start_vertex]) <= float(min):
                 if i in s:
                     min = unvisited_queue[i][start_vertex]
-                    print(" in i = %s and start v =  %s with min distance of %s" %(i,start_vertex,min))
+                    print(" in linha = %s and coluna =  %s with min distance of %s" %(i,start_vertex,min))
                     vertx = i
+                    min_distance = min
                     #start_vertex = i
+        ## esse block esta se reperinto a cada for loop
+        print("final min distance", min)
+        min = 100
         print("vertex", vertx)
+        print("s list", s)
+        start_vertex = vertx
         t = s.index(vertx)
-        print("valor do index p ser pop",t)
+        print("############")
+
         current_vertex = s.pop(t)
-        print(("current v",current_vertex))
-        # start_vertex= vertx
+         # start_vertex= vertx
 
 
 
