@@ -60,7 +60,8 @@ def get_vertices_truck1():
 
     for i in truck_one:
         truck1_vertices.append(address_dictionary[i.package_address])
-    return truck1_vertices
+    print("v for t1", truck1_vertices)
+    return list(set(truck1_vertices)) # remove duplicates
 
 
 def get_vertices_truck2():
@@ -69,22 +70,24 @@ def get_vertices_truck2():
 
     for i in truck_two:
         truck2_vertices.append(address_dictionary[i.package_address])
-
-    return truck2_vertices
+    print("v for t2", truck2_vertices)
+    return list(set(truck2_vertices))
 
 
 def get_vertices_truck3():
     address_dictionary = get_address_vertices()
     truck3_vertices = []
-
     for i in truck_three:
         if i.package_id == 9:
             i.package_address = "410 S State St"
             i.package_zip = "84111"
-        print("Package #9 address was corrected")
+            print("Package #9 address was corrected")
         truck3_vertices.append(address_dictionary[i.package_address])
-    return truck3_vertices
+    print("v for t3", truck3_vertices)
+    return list(set(truck3_vertices))
 
 
-b = load_trucks()
-a= get_vertices_truck1()
+# b = load_trucks()
+# a= get_vertices_truck1()
+# b = get_vertices_truck2()
+# c=get_vertices_truck3()
