@@ -7,9 +7,9 @@ def time_per_mile(mile):
     minutes = (float(mile)*60)/18
     return minutes
 
-def set_time(short_path, truck_number, start_time, is_priority):
-
-    addresses_vertices = loadTruck.get_address_vertices()
+def set_time(short_path_distance,short_path_vertex, truck_number, start_time, is_priority):
+    print("start time", str(datetime.timedelta(minutes=start_time)))
+    _,addresses_vertices = loadTruck.get_address_vertices()
     time = start_time
     hash_table = readPackages.get_hash_table()
     # get the packages from truck
@@ -26,12 +26,17 @@ def set_time(short_path, truck_number, start_time, is_priority):
 
     # calculate time
 
-    for i in short_path:
-        time += time_per_mile(short_path[i])
-        vertex = get_key(short_path[i],short_path)
-        selected_address = get_key(vertex,addresses_vertices) if vertex is not None else None
-        #print("vertex", vertex, "and address ", selected_address)
+    for i in range(len(short_path_distance)):
 
+        # print("vertice current",short_path[i])
+        print("value to add in time",str(datetime.timedelta(minutes=time_per_mile(short_path_distance[i]))))
+        print("current vertex",short_path_vertex[i])
+        print("current distance",short_path_distance[i])
+        print("time antes de somado", str(datetime.timedelta(minutes=time)))
+        time += time_per_mile(short_path_distance[i])
+        selected_address = addresses_vertices[short_path_vertex[i]]
+        print("time depois de somado", str(datetime.timedelta(minutes=time)))
+        print ("current address", selected_address)
 
         #to set the delivery time for the package
         for package in packages_in_truck:
@@ -41,13 +46,7 @@ def set_time(short_path, truck_number, start_time, is_priority):
                 print("pack id:", selected_package.package_id, " ", selected_package.delivery_status)
                 print(" ")
     print("total time nessa rodada",str(datetime.timedelta(minutes=time)))
+
     return time
 
-# to retrieve keys for the dictionaries
-def get_key(item, dictionary_list):
-    for key, value in dictionary_list.items():
-        if item == value:
-            return key
-    else:
-        return None
 

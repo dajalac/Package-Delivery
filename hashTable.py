@@ -15,21 +15,21 @@ class MyHashTable:
     # it has a big O notation of O(1)
     def _my_hash(self,key):
         index = int(key) % len(self.hash_list)
-        print("modulo de ", len(self.hash_list))
-        print("index no my have: ", index)
+        # print("modulo de ", len(self.hash_list))
+        # print("index no my have: ", index)
         return index
 
     # to add the key and value into the hash table
     # it has a big O notation of O(1)
     def add(self,key,value):
         bucket_index = self._my_hash(key)
-        print("bucket index no add, should be the same as id: ", bucket_index)
+        # print("bucket index no add, should be the same as id: ", bucket_index)
         item_to_add = [key, value]
         # selected_bucket is the bucket selected by the hash function
         selected_bucket = self.hash_list[bucket_index]
         # Since each bucket has a list, it will append the key and value to the bucket list
         selected_bucket.append(item_to_add)
-        print("selected bucket no index",bucket_index,"item", selected_bucket)
+        # print("selected bucket no index",bucket_index,"item", selected_bucket)
 
     # to search for a key
     # it has a big O notation of O(n)

@@ -61,11 +61,16 @@ def get_address_vertices():
         address_vertices_dic = {}
         for i in range(len(names)):
             address_vertices_dic.update({names[i][1]: i}) # address = key and i = index (used to get the address vertex index
-        return address_vertices_dic
+
+
+        vertices_address_dic = {}
+        for i in range(len(names)):
+            vertices_address_dic.update({i: names[i][1]}) # key = vertex and value = address
+        return address_vertices_dic, vertices_address_dic
 
 
 def get_vertices_truck1():
-    address_dictionary = get_address_vertices()
+    address_dictionary,_ = get_address_vertices()
     truck1_vertices_total = []
     truck1_vertices_priority = []
     truck1_vertices_EOB = []
@@ -84,7 +89,7 @@ def get_vertices_truck1():
 
 
 def get_vertices_truck2():
-    address_dictionary = get_address_vertices()
+    address_dictionary,_ = get_address_vertices()
     truck2_vertices_total = []
     truck2_vertices_priority = []
     truck2_vertices_EOB = []
@@ -102,7 +107,7 @@ def get_vertices_truck2():
 
 
 def get_vertices_truck3():
-    address_dictionary = get_address_vertices()
+    address_dictionary,_ = get_address_vertices()
     truck3_vertices = []
     for i in truck_three_EOB:
         if i.package_id == 9:
@@ -111,6 +116,8 @@ def get_vertices_truck3():
             print("Package #9 address was corrected")
         truck3_vertices.append(address_dictionary[i.package_address])
     return list(set(truck3_vertices))
+
+
 
 
 # b = load_trucks()
