@@ -35,21 +35,21 @@ def load_trucks():
             truck_three_EOB.append(item)
     print("Trucks loaded.")
 
-    # print("truck1 %s" % truck_one)
-    for i in truck_one_priority:
-        print("truk1 PRIORITY id", i.package_id)
-    for i in truck_one_EOB:
-        print("truk1 id", i.package_id)
-    # print("truck2 %s" % truck_two)
-    print("#########")
-    for i in truck_two_priority:
-        print("truk2 PRIORITY id", i.package_id)
-    for i in truck_two_EOB:
-        print("truk2 id", i.package_id)
-    print("#########")
-    # print("truck3 %s" % truck_three)
-    for i in truck_three_EOB:
-        print("truk3 id", i.package_id)
+    # # print("truck1 %s" % truck_one)
+    # for i in truck_one_priority:
+    #     print("truk1 PRIORITY id", i.package_id)
+    # for i in truck_one_EOB:
+    #     print("truk1 id", i.package_id)
+    # # print("truck2 %s" % truck_two)
+    # print("#########")
+    # for i in truck_two_priority:
+    #     print("truk2 PRIORITY id", i.package_id)
+    # for i in truck_two_EOB:
+    #     print("truk2 id", i.package_id)
+    # print("#########")
+    # # print("truck3 %s" % truck_three)
+    # for i in truck_three_EOB:
+    #     print("truk3 id", i.package_id)
 
 
 def get_address_vertices():
@@ -80,7 +80,6 @@ def get_vertices_truck1():
         truck1_vertices_EOB.append(address_dictionary[i.package_address])
 
     truck1_vertices_total.append(list(set(truck1_vertices_EOB)))
-    print("v for t1", truck1_vertices_total)
     return truck1_vertices_total # remove duplicates
 
 
@@ -99,7 +98,6 @@ def get_vertices_truck2():
     for i in truck_two_EOB:
         truck2_vertices_EOB.append(address_dictionary[i.package_address])
     truck2_vertices_total.append(list(set(truck2_vertices_EOB)))
-    print("v for t2", truck2_vertices_total)
     return truck2_vertices_total
 
 
@@ -107,12 +105,11 @@ def get_vertices_truck3():
     address_dictionary = get_address_vertices()
     truck3_vertices = []
     for i in truck_three_EOB:
-    #     if i.package_id == 9:
-    #         i.package_address = "410 S State St"
-    #         i.package_zip = "84111"
-    #         print("Package #9 address was corrected")
+        if i.package_id == 9:
+            i.package_address = "410 S State St"
+            i.package_zip = "84111"
+            print("Package #9 address was corrected")
         truck3_vertices.append(address_dictionary[i.package_address])
-    print("v for t3", truck3_vertices)
     return list(set(truck3_vertices))
 
 

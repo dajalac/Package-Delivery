@@ -78,7 +78,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
                         if i in truck_addresses:
                             minimum = distance_list[start_vertex][i]
                             print(" EMPTY in coluna  = %s and linha v %s with min distance of %s" % (
-                                i, start_vertex, minimum))
+                                 i, start_vertex, minimum))
                             vertex = i
                             min_distance = minimum
                             # start_vertex = i
@@ -96,7 +96,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
             print("final min distance", minimum)
             minimum = 100
             print("vertex", vertex)
-            print("s list", truck_addresses)
+            print("truck address list", truck_addresses)
             start_vertex = vertex
             t = truck_addresses.index(vertex)
             print("############")
@@ -117,7 +117,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
                 print(" in linha = 0 and coluna =  %s with min distance of %s" % (start_vertex, min_distance))
                 print("distance from hub", min_distance)
             vertices_minDistance_dic.update({0: min_distance})
-        print("dicionarion", vertices_minDistance_dic)
+        # print("dicionarion", vertices_minDistance_dic)
         return vertex , distance_accumulator
 
     def get_shortPath():

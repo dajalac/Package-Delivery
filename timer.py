@@ -30,7 +30,7 @@ def set_time(short_path, truck_number, start_time, is_priority):
         time += time_per_mile(short_path[i])
         vertex = get_key(short_path[i],short_path)
         selected_address = get_key(vertex,addresses_vertices) if vertex is not None else None
-        print("vertex", vertex, "and address ", selected_address)
+        #print("vertex", vertex, "and address ", selected_address)
 
 
         #to set the delivery time for the package
@@ -40,7 +40,7 @@ def set_time(short_path, truck_number, start_time, is_priority):
                 selected_package.delivery_status = "Delivered at:"+str(datetime.timedelta(minutes=time))
                 print("pack id:", selected_package.package_id, " ", selected_package.delivery_status)
                 print(" ")
-
+    print("total time nessa rodada",str(datetime.timedelta(minutes=time)))
     return time
 
 # to retrieve keys for the dictionaries
