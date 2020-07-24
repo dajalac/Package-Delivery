@@ -4,7 +4,7 @@ import csv
 import csv
 
 distance_list = []
-vertices_minDistance_dic = {}
+#vertices_minDistance_dic = {}
 path_distance = []
 path_vertices = []
 
@@ -15,7 +15,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
         distance_list.append(row)
 
 
-    def find_short_path(truck_addresses, got_to_hub, start_vertex=0):
+    def find_short_path(truck_addresses,start_vertex=0):
         path_distance.clear()
         path_vertices.clear()
         global vertex
@@ -41,7 +41,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
                         min_distance = minimum
                         # start_vertex = i
             ## esse block esta se reperinto a cada for loop
-            vertices_minDistance_dic.update({vertex: minimum})
+            #vertices_minDistance_dic.update({vertex: minimum})
             path_distance.append(minimum)
             path_vertices.append(vertex)
             distance_accumulator += float(min_distance)
@@ -54,7 +54,7 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
             t = truck_addresses.index(vertex)
             # print("############")
             current_vertex = truck_addresses.pop(t)
-        if got_to_hub:
+        if len(truck_addresses) == 0:
             # print("initial vertex", start_vertex)
             if distance_list[0][start_vertex] is '':
                 min_distance = distance_list[start_vertex][0]
@@ -69,11 +69,11 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
                 # print("total acumulator no final", distance_accumulator)
                 # print(" in linha = 0 and coluna =  %s with min distance of %s" % (start_vertex, min_distance))
                 # print("distance from hub", min_distance)
-            vertices_minDistance_dic.update({0: min_distance})
-        print("dicionarion", vertices_minDistance_dic)
+            #vertices_minDistance_dic.update({0: min_distance})
+        #print("dicionarion", vertices_minDistance_dic)
         print("vertices ,", path_vertices)
         print("distance,", path_distance)
-        return vertex, distance_accumulator
+        return distance_accumulator
 
 
     def get_shortPath():
