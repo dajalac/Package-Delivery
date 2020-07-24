@@ -118,7 +118,8 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
                 print("distance from hub", min_distance)
             vertices_minDistance_dic.update({0: min_distance})
         print("dicionarion", vertices_minDistance_dic)
-        return vertex
+        return vertex , distance_accumulator
 
     def get_shortPath():
         return vertices_minDistance_dic
+

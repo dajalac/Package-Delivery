@@ -9,7 +9,6 @@ truck_one_priority = []
 truck_two_EOB = []
 truck_two_priority = []
 truck_three_EOB = []
-truck_three_priority = []
 hash_table = readPackages.get_hash_table()
 MAX_LENGTH = 16
 

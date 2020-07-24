@@ -1,5 +1,8 @@
+import datetime
+
 import loadTruck
-from  distances import *
+import distances
+from timer import set_time
 
 # load trucks
 
@@ -21,9 +24,22 @@ t3_address_vertices = loadTruck.get_vertices_truck3()
 print("t3 vertixe in main", t3_address_vertices)
 
 ## if time = 8: truck 1 is out
+# priority
+t1_priority_endPoint, distances_priority = distances.find_short_path(t1_address_vertices_priority, False)
+t1_priority_short_path = distances.get_shortPath()
+print("total distance p o t1", distances_priority)
+t1_priority_time = set_time(t1_priority_short_path,1,8*60,True)
+print("start delivery time p o eob", t1_priority_time)
+# # eob pachakes
+t1_EOD_endPoint, distances_EOD = distances.find_short_path(t1_address_vertices_EOB, t1_priority_endPoint, True)
+t1_EOB_short_path = distances.get_shortPath()
+t1_EOB_time = set_time(t1_EOB_short_path,1, t1_priority_time,False)
+#
+print("truck one left at 8 AM and returned at ",str(datetime.timedelta(minutes=(t1_EOB_time))))
+print("truck one traveled ", distances_priority+distances_EOD)
 
-#t1_priority= short_path2(t1_address_vertices_priority,False)
-find_short_path(t1_address_vertices_EOB,True,21)
+#find_short_path(t1_address_vertices_EOB,True,21)
+
 
 ## if time = 9:10 truck 2
 #distance2 = short_path(t2_address_vertices)
