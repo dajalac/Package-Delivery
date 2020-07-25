@@ -14,8 +14,8 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
     for row in readCsv:
         distance_list.append(row)
 
-
-    def find_short_path(truck_addresses,start_vertex=0):
+class Distance:
+    def find_short_path(self,truck_addresses,start_vertex=0):
         path_distance.clear()
         path_vertices.clear()
         global vertex
@@ -76,5 +76,5 @@ with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
         return distance_accumulator
 
 
-    def get_shortPath():
+    def get_shortPath(self):
         return path_distance, path_vertices
