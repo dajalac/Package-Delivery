@@ -10,7 +10,6 @@ path_vertices = []
 
 with open('WGUPS_Distance_Table.csv', 'r') as csv_file:
     readCsv = csv.reader(csv_file, delimiter=',')
-    print(readCsv)
     for row in readCsv:
         distance_list.append(row)
 
@@ -62,7 +61,7 @@ def find_short_path(truck_addresses,start_vertex=0):
                 # print(" EMPTY in coluna  = 0 and linha v %s with min distance of %s" % (start_vertex, min_distance))
                 # print("distance from hub", min_distance)
             else:
-                print("initial vertex", start_vertex)
+                # print("initial vertex", start_vertex)
                 min_distance = distance_list[0][start_vertex]
                 distance_accumulator += float(min_distance)
                 # print("total acumulator no final", distance_accumulator)
@@ -70,8 +69,8 @@ def find_short_path(truck_addresses,start_vertex=0):
                 # print("distance from hub", min_distance)
             #vertices_minDistance_dic.update({0: min_distance})
         #print("dicionarion", vertices_minDistance_dic)
-        print("vertices ,", path_vertices)
-        print("distance,", path_distance)
+        # print("vertices ,", path_vertices)
+        # print("distance,", path_distance)
         return distance_accumulator
 
 

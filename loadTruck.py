@@ -13,7 +13,8 @@ MAX_LENGTH = 16
 
 
 def load_trucks():
-    print("Package #9 has the wrong address. It has to be corrected before it be out for delivery")
+    # print("Package #9 has the wrong address. It has to be corrected before it be out for delivery")
+    # print(" ")
 
     # for i in [14, 15, 16, 34, 20, 21, 19, 1, 7, 29, 37, 30, 13, 39, 27, 35]:
     #     item = hash_table.search(i)
@@ -37,7 +38,6 @@ def load_trucks():
         item = hash_table.search(i)
         all_package.append(item)
 
-    print("Trucks loaded.")
 
     # # print("truck1 %s" % truck_one)
     # for i in truck_one_priority:
@@ -101,7 +101,7 @@ def get_vertices_truck3():
         if i.package_id == 9:
             i.package_address = "410 S State St"
             i.package_zip = "84111"
-            print("Package #9 address was corrected")
+            #print("Package #9 address was corrected")
         truck3_vertices.append(address_dictionary[i.package_address])
     return list(set(truck3_vertices))
 

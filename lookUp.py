@@ -1,7 +1,3 @@
-# from loadTruck import get_truck_one_packages
-# from loadTruck import get_truck_two_packages
-#from loadTruck import LoadTrucks
-
 import readPackages
 import datetime
 import os
@@ -14,7 +10,7 @@ hash_table = readPackages.get_hash_table()
 
 
 def luckUp_id(pack_id):
-    print ("esse eh o id to find:", pack_id)
+    #print ("esse eh o id to find:", pack_id)
     for i in range(1, 41):
         item = hash_table.search(i)
         if item.package_id == pack_id:
@@ -69,10 +65,10 @@ def lookUp_time(input_time):
                 item.package_delivery = time_formated
 
             print("Package id:", item.package_id,
-                  "Delivery address:", item.package_address, " ", item.package_city, " ", item.package_state, " ",
+                  "Delivery address:", item.package_address, "", item.package_city, "", item.package_state, "",
                   item.package_zip,
                   "Package weight :", item.package_kg,
-                  "Delivery deadline: ", item.package_deadline,
+                  "Delivery deadline:", item.package_deadline,
                   "Delivery status: ", item.package_delivery)
 
         print(" ")
