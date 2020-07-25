@@ -11,37 +11,36 @@ import lookUp
 
 
 def truck_out_for_delivery(package_address_vertices_list, truck_number, time):
-    set_delivery = timer
+    travel_distance = distances.find_short_path(package_address_vertices_list)  # !!!!! mudei p true
+    shortPath_distance_list, shortPath_vertex_list = distances.get_shortPath()
+    packages_time = timer.set_time(shortPath_distance_list, shortPath_vertex_list, truck_number,
+                                       time)  # !!!! mudei p falso
 
-    travel_distance = distances.find_short_path(package_address_vertices_list)# !!!!! mudei p true
-    shortPath_distance_list,shortPath_vertex_list = distances.get_shortPath()
-    packages_time = set_delivery.set_time(shortPath_distance_list,shortPath_vertex_list, truck_number, time) #!!!! mudei p falso
+    total_distance = travel_distance  # + eob_distance
+    total_time = packages_time  # eob_packages_time
+        #
+    print("truck", truck_number, "total distance :", total_distance, "left at",
+              str(datetime.timedelta(minutes=time)),
+              "and returned at", str(datetime.timedelta(minutes=total_time)))
 
-    total_distance = travel_distance # + eob_distance
-    total_time =packages_time # eob_packages_time
-    #
-    print("truck", truck_number, "total distance :", total_distance,"left at", str(datetime.timedelta(minutes=time)),
-           "and returned at", str(datetime.timedelta(minutes=total_time)))
-
-
-
-# load trucks
+ # load trucks
 load_truck = loadTruck.load_trucks()
 
 print("in main")
-#truck 1
+    # truck 1
 
 t1_address_vertices = loadTruck.get_vertices_truck1()
 truck_out_for_delivery(t1_address_vertices, 1, 8 * 60)
-# truck 2
+    # truck 2
 t2_address_vertices = loadTruck.get_vertices_truck2()
 truck_out_for_delivery(t2_address_vertices, 2, (9 * 60) + 10)
 
-# truck 3
+    # truck 3
 t3_address_vertices = loadTruck.get_vertices_truck3()
-truck_out_for_delivery(t3_address_vertices,3,(11*60))
+truck_out_for_delivery(t3_address_vertices, 3, (11 * 60))
 
-# look up commands
+
+    # look up commands
 print("Select from the following : ")
 print(" 1 = Look up a package by its time ")
 print(" 2 = Look up a package by ID")
@@ -50,15 +49,71 @@ print(" 4 = End the program ")
 
 user_input = input()
 
-lookUp.lookUp_time(float(int(user_input)*60))
+if user_input == "1":
+    print("Enter a time :")
+    print("Note: time must be 24h format HH:MM")
+    print("Example: 16:00")
+    hour_input = input()
+    ## treat imput 1
+    (h,m) = hour_input.split(':')
+    print("min",float(m))
+    print("ho",float(h))
 
+    time_formated = float(h)*60+float(m)
+    print("time formated", time_formated)
 
-#look_up = lookUp
+    lookUp.lookUp_time(time_formated)
 
+if user_input == "2":
+    print("Enter a package ID : ")
+    pack_id = input()
+    lookUp.luckUp_id(int(pack_id))
+if user_input == "3":
+    lookUp.lookUp_time(float(15* 60))
+if user_input == "4":
+    exit()
 
-
-
-
-
-
+    # look_up = lookUp
+# def truck_out_for_delivery(package_address_vertices_list, truck_number, time):
+#
+#
+#     travel_distance = distances.find_short_path(package_address_vertices_list)# !!!!! mudei p true
+#     shortPath_distance_list,shortPath_vertex_list = distances.get_shortPath()
+#     packages_time = timer.set_time(shortPath_distance_list,shortPath_vertex_list, truck_number, time) #!!!! mudei p falso
+#
+#     total_distance = travel_distance # + eob_distance
+#     total_time =packages_time # eob_packages_time
+#     #
+#     print("truck", truck_number, "total distance :", total_distance,"left at", str(datetime.timedelta(minutes=time)),
+#            "and returned at", str(datetime.timedelta(minutes=total_time)))
+#
+#
+#  # load trucks
+# load_truck = loadTruck.load_trucks()
+#
+# print("in main")
+#     # truck 1
+#
+# t1_address_vertices = loadTruck.get_vertices_truck1()
+# truck_out_for_delivery(t1_address_vertices, 1, 8 * 60)
+#     # truck 2
+# t2_address_vertices = loadTruck.get_vertices_truck2()
+# truck_out_for_delivery(t2_address_vertices, 2, (9 * 60) + 10)
+#
+#     # truck 3
+# t3_address_vertices = loadTruck.get_vertices_truck3()
+# truck_out_for_delivery(t3_address_vertices, 3, (11 * 60))
+#
+#     # look up commands
+# print("Select from the following : ")
+# print(" 1 = Look up a package by its time ")
+# print(" 2 = Look up a package by ID")
+# print(" 3 = Show all packages")
+# print(" 4 = End the program ")
+#
+# user_input = input()
+#
+# lookUp.lookUp_time(float(int(user_input) * 60))
+#
+#     # look_up = lookUp
 
