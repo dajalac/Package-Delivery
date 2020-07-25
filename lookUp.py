@@ -1,16 +1,17 @@
-from loadTruck import get_truck_one_packages
-from loadTruck import get_truck_two_packages
-from loadTruck import get_truck_three_packages
+# from loadTruck import get_truck_one_packages
+# from loadTruck import get_truck_two_packages
+#from loadTruck import LoadTrucks
+
 import readPackages
 import datetime
 
 hash_table = readPackages.get_hash_table()
 
-truck_one = get_truck_one_packages()
-truck_two = get_truck_two_packages()
-truck_three = get_truck_three_packages()
+# truck_one = get_truck_one_packages()
+# truck_two = get_truck_two_packages()
+# truck_three = get_truck_three_packages()
 
-class LookUp :
+
 
     # def luckUp_id(id):
     #     for i in all_packages:
@@ -23,13 +24,12 @@ class LookUp :
     #                   "Delivery deadline: ", item.package_deadline,
     #                   "Delivery status: ", item.package_delivery)
 
-    def lookUp_time(self,input_time):
+def lookUp_time(input_time):
         # copy of original list
         # transforar input in minutes
 
         for i in range(1, 41):
             item = hash_table.search(i)
-            # print("input time", input_time)
             if input_time < 8 * 60:
                 # print("antes de tudo", item.package_delivery)
                 item.package_delivery = "At Hub"
@@ -73,15 +73,15 @@ class LookUp :
                   "Delivery deadline: ", item.package_deadline,
                   "Delivery status: ", item.package_delivery)
 
-            print(" ")
-            self.next_action()
+        print(" ")
+        #next_action()
 
 
-    def next_action(self):
+def next_action():
         print("Select from the following : ")
         print("1 = Return to main menu ")
         print("2 = Exit the program ")
 
-        user_input = input()
-        if user_input == 1:
-            exec(open("main.py").read())
+        # user_input = input()
+        # if user_input == 1:
+        #     exec(open("main.py").read())
