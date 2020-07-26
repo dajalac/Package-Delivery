@@ -1,4 +1,6 @@
-# class to store the packages objects
+# class to store the packages as objects
+# big O notation of O(1)
+
 
 class Packages:
     def __init__(self, package_id, package_address, package_city, package_state, package_zip,
