@@ -34,7 +34,6 @@ load_truck = loadTruck.load_trucks()
 # the t1_address_vertices ware calculated at loadTruck.py
 # 1 represent the truck number
 # 8 represents what time the truck 1 left for delivery. It is multiplies by 60 to transforms hours to minutes
-
 t1_address_vertices = loadTruck.get_vertices_truck1()
 truck_out_for_delivery(t1_address_vertices, 1, 8 * 60)
 
@@ -62,7 +61,7 @@ print(" 4 = End the program ")
 user_input = input()  # holds the user input
 
 # It will show the the packages delivery status according to the user time input
-# Big O notation of O(1)
+# Big O notation of O(n)
 if user_input == "1":
     error = True
     while error:  # it will replay this message if the user insert a illegal input
@@ -82,7 +81,7 @@ if user_input == "1":
             pass
 
 # it will show the package that the user chooses
-# Big O of O(1)
+# Big O of O(n)
 if user_input == "2":
     error = True
     while error:
@@ -90,16 +89,18 @@ if user_input == "2":
         pack_id = input()
         try:
             error: False
-            lookUp.luckUp_id(int(pack_id))
+            lookUp.lookUp_id(int(pack_id))
         except:
             print("Please review your input and try again")
             error = True
             pass
 
 # show the delivery time for all packages
+# Big O notation of O(N)
 if user_input == "3":
     lookUp.lookUp_time(float(15 * 60))
 
 # exit the program
+# Big O notation of O(1)
 if user_input == "4":
     exit()

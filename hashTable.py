@@ -45,6 +45,17 @@ class MyHashTable:
         if selected_key is None:
             return None
 
+    # to remove a item from the hash table
+    # Big O notation of O(n)
+    def remove (self, key):
+        bucket_index = self._my_hash(key)
+        selected_bucket = self.hash_list[bucket_index]
+        selected_key = None
+        # It will search through the bucket list
+        for i in selected_bucket:
+            if key == i[0]:
+                selected_bucket.pop(i[0])
+
     # to get hashtable length
     # it has a big O notation of O(1)
     def hash_length(self):

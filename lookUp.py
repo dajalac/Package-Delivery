@@ -7,7 +7,7 @@ hash_table = readPackages.get_hash_table()
 # this function will return the package choose by the user
 # pack_id is the value input by the user
 # Big O notation of O(N)
-def luckUp_id(pack_id):
+def lookUp_id(pack_id):
     for i in range(1, 41):
         item = hash_table.search(i)
         if item.package_id == pack_id:
