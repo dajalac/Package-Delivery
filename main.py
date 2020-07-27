@@ -4,6 +4,7 @@ import loadTruck
 import distances
 import timer
 import lookUp
+import sys
 
 
 # this function will sent the trucks out for delivery
@@ -83,17 +84,30 @@ if user_input == "1":
 # it will show the package that the user chooses
 # Big O of O(n)
 if user_input == "2":
-    error = True
-    while error:
-        print("Enter a package ID : ")
-        pack_id = input()
-        try:
-            error: False
-            lookUp.lookUp_id(int(pack_id))
-        except:
-            print("Please review your input and try again")
-            error = True
-            pass
+    print("Enter a package ID : ")
+    pack_id = input()
+    try:
+        input_id = pack_id
+        error: False
+        lookUp.lookUp_id(int(input_id))
+    except:
+        print("Please review your input and try again")
+        import subprocess
+        subprocess.call("main.py", shell=True)
+
+# if user_input == "2":
+#     error = True
+#     while error:
+#         print("Enter a package ID : ")
+#         pack_id = input()
+#         try:
+#             input_id = pack_id
+#             error: False
+#             lookUp.lookUp_id(int(input_id))
+#         except:
+#             print("Please review your input and try again")
+#             error = True
+#             pass
 
 # show the delivery time for all packages
 # Big O notation of O(N)
@@ -103,4 +117,4 @@ if user_input == "3":
 # exit the program
 # Big O notation of O(1)
 if user_input == "4":
-    exit()
+    sys.exit()

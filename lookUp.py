@@ -1,5 +1,6 @@
 import readPackages
 import datetime
+import sys
 
 hash_table = readPackages.get_hash_table()
 
@@ -71,13 +72,10 @@ def lookUp_time(input_time):
 # the user can choose to go back to the main and execute another search or it can exit the program
 # Big O notation of O(1)
 def next_action():
-    print("Select from the following : ")
-    print("1 = Return to main screen ")
-    print("2 = Exit the program ")
+    print("Enter any value to return to the main screen: ")
     #
-    user_input = input()
-    if user_input == "1":
-        import subprocess
-        subprocess.call("main.py", shell=True)
-    else:
-        exit()
+    user_input2 = input()
+    import subprocess
+    subprocess.call("main.py", shell=True)
+
+
